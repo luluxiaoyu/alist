@@ -78,6 +78,9 @@ func SSOLoginRedirect(c *gin.Context) {
 	case "Github":
 		rUrl = "https://github.com/login/oauth/authorize?"
 		urlValues.Add("scope", "read:user")
+	case "MSL":
+		rUrl = "https://user.mslmc.net/oauth?"
+		urlValues.Add("scope", "all")
 	case "Microsoft":
 		rUrl = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?"
 		urlValues.Add("scope", "user.read")
@@ -307,6 +310,13 @@ func SSOLoginCallback(c *gin.Context) {
 		scope = "read:user"
 		idField = "id"
 		usernameField = "login"
+	case "MSL":
+		tokenUrl = "https://user.mslmc.net/api/oauth/exchangeAccessToken"
+		userUrl = "https://user.mslmc.net/api/oauth/user"
+		authField = "code"
+		scope = "all"
+		idField = "uid"
+		usernameField = "username"
 	case "Microsoft":
 		tokenUrl = "https://login.microsoftonline.com/common/oauth2/v2.0/token"
 		userUrl = "https://graph.microsoft.com/v1.0/me"
