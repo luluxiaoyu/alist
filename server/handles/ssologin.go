@@ -81,6 +81,7 @@ func SSOLoginRedirect(c *gin.Context) {
 	case "MSL":
 		rUrl = "https://user.mslmc.net/oauth?"
 		urlValues.Add("scope", "all")
+		urlValues.Add("response_mode", "code")
 	case "Microsoft":
 		rUrl = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?"
 		urlValues.Add("scope", "user.read")
