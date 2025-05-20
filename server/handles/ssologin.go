@@ -79,7 +79,7 @@ func SSOLoginRedirect(c *gin.Context) {
 		rUrl = "https://github.com/login/oauth/authorize?"
 		urlValues.Add("scope", "read:user")
 	case "MSL":
-		rUrl = "https://user.mslmc.net/oauth?"
+		rUrl = "https://user.mslmc.net/oauth/authorize?"
 		urlValues.Add("scope", "all")
 		urlValues.Add("response_mode", "code")
 		urlValues.Add("state", "moenahida")
